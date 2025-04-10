@@ -8,14 +8,17 @@
     --light-bg: #f8f9fa; /* Light Gray for alternating sections */
     --white-color: #fff;
     --border-color: #e0e0e0;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --highlight-bg: #ffe0e0; /* Light red background for highlight */
-    --highlight-text: #e60000; /* Red text for highlight */
+    --shadow-color: rgba(0, 0, 0, 0.08); /* Slightly softer shadow */
+    --highlight-bg: #fff0f0; /* Softer red background for highlight */
+    --highlight-text: #cc0000; /* Slightly less intense red text */
+    --hero-gradient-start: #eef5ff; /* Light blue gradient start */
+    --hero-gradient-end: #ffffff;   /* White gradient end */
 
     --font-primary: 'Inter', sans-serif;
     --base-font-size: 16px;
     --line-height-base: 1.7;
-    --border-radius: 12px; /* Consistent rounded corners */
+    --border-radius: 12px;
+    --container-width: 1140px; /* Increased container width */
 }
 
 * {
@@ -25,7 +28,7 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Smooth scrolling for anchor links if added later */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -34,13 +37,37 @@ body {
     line-height: var(--line-height-base);
     color: var(--text-color);
     background-color: var(--white-color);
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
+/* --- MODIFICATION: Container handles horizontal padding --- */
 .container {
-    max-width: 960px;
+    max-width: var(--container-width); /* Use variable for width */
     margin: 0 auto;
-    padding: 60px 20px; /* Increased vertical padding */
+    padding-left: 20px;  /* Horizontal padding */
+    padding-right: 20px; /* Horizontal padding */
+    width: 100%; /* Ensure it takes full width up to max-width */
 }
+
+/* --- MODIFICATION: Sections handle vertical padding --- */
+header.hero,
+section#services,
+section#about,
+footer.cta-footer {
+    padding-top: 80px;    /* Vertical padding on sections */
+    padding-bottom: 80px; /* Vertical padding on sections */
+    width: 100%; /* Ensure sections span full width */
+}
+
+/* Adjust padding for smaller sections if needed */
+header.hero {
+    padding-top: 60px; /* Slightly less padding for hero */
+}
+footer.cta-footer {
+   padding-top: 60px;
+   padding-bottom: 60px;
+}
+
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-primary);
@@ -51,27 +78,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1.main-headline {
-    font-size: 2.8rem; /* Larger main headline */
+    font-size: 3rem; /* Slightly larger */
     margin-bottom: 0.5rem;
     color: var(--heading-color);
 }
 
 h2.section-title {
-    font-size: 2.2rem;
+    font-size: 2.4rem; /* Slightly larger */
     text-align: center;
-    margin-bottom: 40px; /* More space below section titles */
-    color: var(--secondary-color); /* Use secondary color for section titles */
+    margin-bottom: 50px; /* More space below section titles */
+    color: var(--secondary-color);
 }
 
 h3 {
     font-size: 1.4rem;
-    color: var(--primary-color); /* Use primary color for card titles */
+    color: var(--primary-color);
     font-weight: 600;
 }
 
 p {
     margin-bottom: 1rem;
-    text-align: left; /* Default left align paragraphs */
+    text-align: left;
 }
 
 a {
@@ -94,15 +121,16 @@ img {
 /* === BUTTON STYLES === */
 .btn {
     display: inline-block;
-    padding: 14px 36px;
-    font-size: 1rem;
+    padding: 15px 40px; /* Slightly larger padding */
+    font-size: 1.05rem; /* Slightly larger font */
     font-weight: 600;
     text-align: center;
     border-radius: var(--border-radius);
     text-decoration: none;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     border: none;
+    box-shadow: 0 4px 10px rgba(0, 86, 246, 0.2); /* Subtle shadow for button */
 }
 
 .btn-primary {
@@ -112,59 +140,65 @@ img {
 
 .btn-primary:hover {
     background-color: var(--primary-hover);
-    color: var(--white-color); /* Ensure text color remains white */
-    text-decoration: none; /* Remove underline on button hover */
-    transform: translateY(-2px); /* Slight lift effect */
+    color: var(--white-color);
+    text-decoration: none;
+    transform: translateY(-3px); /* Slightly more lift */
+    box-shadow: 0 6px 15px rgba(0, 86, 246, 0.3); /* Enhanced shadow on hover */
 }
 
 /* === HEADER / HERO SECTION === */
+/* --- MODIFICATION: Full width background with gradient --- */
 .hero {
-    background-color: var(--light-bg); /* Light background for hero */
+    /* background-color: var(--light-bg); Remove simple bg color */
+    background: linear-gradient(160deg, var(--hero-gradient-start) 0%, var(--hero-gradient-end) 100%); /* Subtle gradient */
     text-align: center;
-    padding-top: 40px; /* Adjust padding */
-    padding-bottom: 40px;
+    /* Vertical padding handled by general section rule */
 }
 
-.hero .container {
-    padding-top: 40px;
-    padding-bottom: 40px;
-}
+/* Remove specific padding from hero .container if it exists */
+/* .hero .container { padding-top: 40px; padding-bottom: 40px; } */ /* REMOVE this if present */
 
 .hero .avatar {
-    width: 150px; /* Larger avatar */
-    height: 150px;
+    width: 160px; /* Slightly larger avatar */
+    height: 160px;
     border-radius: 50%;
-    margin: 0 auto 20px auto; /* Center avatar */
-    border: 4px solid var(--white-color); /* Optional white border */
-    box-shadow: 0 4px 15px var(--shadow-color);
+    margin: 0 auto 25px auto;
+    border: 5px solid var(--white-color);
+    box-shadow: 0 5px 20px var(--shadow-color);
+    transition: transform 0.3s ease; /* Add transition for hover */
+}
+
+.hero .avatar:hover {
+    transform: scale(1.05); /* Slight scale effect on hover */
 }
 
 .hero .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.25rem; /* Slightly larger */
     color: var(--text-color);
-    max-width: 700px;
-    margin: 0 auto 25px auto; /* Center subtitle */
+    max-width: 750px; /* Slightly wider */
+    margin: 0 auto 30px auto;
 }
 
 .hero .offer-highlight {
-    background-color: var(--highlight-bg);
+    background-color: var(--highlight-bg); /* Use updated variable */
     border-radius: var(--border-radius);
-    padding: 15px 20px;
-    margin: 30px auto;
-    max-width: 600px;
-    border: 1px dashed var(--highlight-text);
+    padding: 20px 25px; /* Adjust padding */
+    margin: 35px auto;
+    max-width: 650px;
+    border: 1px dashed var(--highlight-text); /* Use updated variable */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .hero .offer-highlight p {
     margin-bottom: 0.5rem;
     font-size: 1rem;
-    text-align: center; /* Center text within highlight box */
+    text-align: center;
 }
 .hero .offer-highlight p:last-child {
     margin-bottom: 0;
 }
 .hero .offer-highlight .highlight-code {
-    color: var(--highlight-text);
+    color: var(--highlight-text); /* Use updated variable */
     font-weight: 700;
 }
 .hero .offer-details {
@@ -172,94 +206,98 @@ img {
     color: var(--text-color);
 }
 
-
 .hero .btn {
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
 /* === CARD STYLES === */
 .card {
     background: var(--white-color);
     border-radius: var(--border-radius);
-    padding: 25px;
-    box-shadow: 0 4px 12px var(--shadow-color);
+    padding: 30px; /* Slightly more padding */
+    box-shadow: 0 5px 15px var(--shadow-color); /* Use updated shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid var(--border-color);
-    height: 100%; /* Make cards in a grid equal height */
+    height: 100%;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px) scale(1.01); /* Add subtle scale */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* Enhanced hover shadow */
 }
 
 /* === SERVICES SECTION === */
+/* --- MODIFICATION: Ensure background color applies correctly --- */
 .services {
-    background-color: var(--white-color); /* Section specific background */
+    background-color: var(--white-color); /* Explicitly white */
+    /* Vertical padding handled by general section rule */
 }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px; /* Slightly larger gap */
 }
 
 .service-card {
-    text-decoration: none; /* Remove underline from card link */
-    color: inherit; /* Inherit text color */
-    display: flex; /* Use flexbox for better alignment */
-    flex-direction: column; /* Stack content vertically */
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
 }
 
 .service-card h3 {
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* More space below card title */
 }
 
 .service-card p {
     font-size: 0.95rem;
-    margin-bottom: 0; /* Remove bottom margin from last element */
-    flex-grow: 1; /* Allow paragraph to grow to fill space */
+    margin-bottom: 0;
+    flex-grow: 1;
 }
 
 /* === ABOUT ME SECTION === */
+/* --- MODIFICATION: Ensure background color applies correctly --- */
 .about-me {
     background-color: var(--light-bg); /* Alternate background */
+     /* Vertical padding handled by general section rule */
 }
 
 .about-content {
-    max-width: 800px; /* Limit width for readability */
-    margin: 0 auto; /* Center the content block */
+    max-width: 800px;
+    margin: 0 auto;
     text-align: left;
 }
 
 .about-content p strong {
-    color: var(--secondary-color); /* Highlight key terms */
+    color: var(--secondary-color);
 }
 
 /* === FOOTER CTA SECTION === */
+/* --- MODIFICATION: Ensure background color applies correctly --- */
 .cta-footer {
-    background-color: var(--heading-color); /* Dark background for footer */
+    background-color: var(--heading-color);
     color: var(--white-color);
     text-align: center;
+    /* Vertical padding handled by general section rule */
 }
 
-.cta-footer .container {
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
+/* Remove specific padding from footer .container if it exists */
+/* .cta-footer .container { padding-top: 50px; padding-bottom: 50px; } */ /* REMOVE this if present */
+
 
 .cta-footer h2.section-title {
-    color: var(--white-color); /* White title on dark background */
+    color: var(--white-color);
 }
 
 .cta-footer p {
-    color: rgba(255, 255, 255, 0.8); /* Slightly transparent white text */
-    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.85); /* Slightly less transparent */
+    margin-bottom: 30px;
     text-align: center;
 }
 
 .cta-footer .btn {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .cta-footer .contact-info {
@@ -268,7 +306,7 @@ img {
 }
 
 .cta-footer .contact-info a {
-    color: var(--white-color); /* White link in footer */
+    color: var(--white-color);
     font-weight: 600;
 }
 
@@ -278,41 +316,44 @@ img {
 
 
 /* === RESPONSIVE DESIGN === */
-@media (max-width: 768px) {
-    h1.main-headline {
-        font-size: 2.2rem;
-    }
-    h2.section-title {
-        font-size: 1.8rem;
-    }
-    .container {
-        padding: 40px 15px; /* Reduce padding on smaller screens */
-    }
-    .services-grid {
-        grid-template-columns: 1fr; /* Stack service cards */
-        gap: 20px;
-    }
-    .hero .avatar {
-        width: 120px;
-        height: 120px;
+@media (max-width: 1200px) {
+     /* Adjust container width for medium-large screens */
+    :root {
+        --container-width: 960px;
     }
 }
 
+@media (max-width: 992px) {
+    /* Adjust container width and typography for tablets */
+     :root {
+        --container-width: 720px;
+    }
+     h1.main-headline { font-size: 2.5rem; }
+     h2.section-title { font-size: 2rem; }
+     header.hero, section#services, section#about, footer.cta-footer { padding-top: 60px; padding-bottom: 60px; }
+}
+
+
+@media (max-width: 768px) {
+    /* Stack grids, adjust typography further for mobile */
+     :root {
+        /* Container takes full width minus padding */
+        --container-width: 100%;
+    }
+     h1.main-headline { font-size: 2.2rem; }
+     h2.section-title { font-size: 1.8rem; }
+     .container { padding-left: 15px; padding-right: 15px; } /* Reduce horizontal padding */
+     .services-grid { grid-template-columns: 1fr; gap: 25px; }
+     .hero .avatar { width: 130px; height: 130px; }
+     .btn { padding: 14px 35px; font-size: 1rem; }
+     header.hero, section#services, section#about, footer.cta-footer { padding-top: 50px; padding-bottom: 50px; }
+}
+
 @media (max-width: 480px) {
-    h1.main-headline {
-        font-size: 1.8rem;
-    }
-    h2.section-title {
-        font-size: 1.5rem;
-    }
-    .hero .subtitle {
-        font-size: 1rem;
-    }
-    .btn {
-        padding: 12px 28px;
-        font-size: 0.9rem;
-    }
-    .about-content p { /* Ensure about me text isn't too wide on small screens */
-       text-align: left;
-    }
+    /* Final typography adjustments for small mobile */
+    h1.main-headline { font-size: 1.9rem; }
+    h2.section-title { font-size: 1.6rem; }
+    .hero .subtitle { font-size: 1.1rem; }
+    .btn { padding: 12px 30px; font-size: 0.95rem; }
+    .card { padding: 25px; }
 }
