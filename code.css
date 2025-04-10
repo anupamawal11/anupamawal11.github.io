@@ -1,0 +1,354 @@
+/* === GLOBAL STYLES === */
+:root {
+    --primary-color: #0056f6; /* Vibrant Blue for CTAs */
+    --primary-hover: #0045c4; /* Darker Blue for hover */
+    --secondary-color: #4a90e2; /* Lighter Blue for accents/headings */
+    --text-color: #333; /* Dark Gray for body text */
+    --heading-color: #1a1a1a; /* Very Dark Gray/Black for main headings */
+    --light-bg: #f8f9fa; /* Light Gray for alternating sections */
+    --white-color: #fff;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --highlight-bg: #ffe0e0; /* Light red background for highlight */
+    --highlight-text: #e60000; /* Red text for highlight */
+
+    --font-primary: 'Inter', sans-serif;
+    --base-font-size: 16px;
+    --line-height-base: 1.7;
+    --border-radius: 12px; /* Consistent rounded corners */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links if added later */
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: var(--base-font-size);
+    line-height: var(--line-height-base);
+    color: var(--text-color);
+    background-color: var(--white-color);
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 60px 20px; /* Increased vertical padding */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+h1.main-headline {
+    font-size: 2.8rem; /* Larger main headline */
+    margin-bottom: 0.5rem;
+    color: var(--heading-color);
+}
+
+h2.section-title {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 40px; /* More space below section titles */
+    color: var(--secondary-color); /* Use secondary color for section titles */
+}
+
+h3 {
+    font-size: 1.4rem;
+    color: var(--primary-color); /* Use primary color for card titles */
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 1rem;
+    text-align: left; /* Default left align paragraphs */
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* === BUTTON STYLES === */
+.btn {
+    display: inline-block;
+    padding: 14px 36px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    color: var(--white-color); /* Ensure text color remains white */
+    text-decoration: none; /* Remove underline on button hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* === HEADER / HERO SECTION === */
+.hero {
+    background-color: var(--light-bg); /* Light background for hero */
+    text-align: center;
+    padding-top: 40px; /* Adjust padding */
+    padding-bottom: 40px;
+}
+
+.hero .container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.hero .avatar {
+    width: 150px; /* Larger avatar */
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 20px auto; /* Center avatar */
+    border: 4px solid var(--white-color); /* Optional white border */
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.hero .subtitle {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    max-width: 700px;
+    margin: 0 auto 25px auto; /* Center subtitle */
+}
+
+.hero .offer-highlight {
+    background-color: var(--highlight-bg);
+    border-radius: var(--border-radius);
+    padding: 15px 20px;
+    margin: 30px auto;
+    max-width: 600px;
+    border: 1px dashed var(--highlight-text);
+}
+
+.hero .offer-highlight p {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+.hero .offer-highlight p:last-child {
+    margin-bottom: 0;
+}
+.hero .offer-highlight .highlight-code {
+    color: var(--highlight-text);
+    font-weight: 700;
+}
+.hero .offer-details {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+
+.hero .btn {
+    margin-top: 25px;
+}
+
+/* === CARD STYLES === */
+.card {
+    background: var(--white-color);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+    height: 100%; /* Make cards in a grid equal height */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* === SERVICES SECTION === */
+.services {
+    background-color: var(--white-color);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 30px;
+}
+
+.service-card {
+    text-decoration: none; /* Remove underline from card link */
+    color: inherit; /* Inherit text color */
+    display: block; /* Make the whole card clickable */
+}
+
+.service-card h3 {
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    font-size: 0.95rem;
+    margin-bottom: 0; /* Remove bottom margin from last element */
+}
+
+/* === TESTIMONIALS SECTION === */
+.testimonials {
+    background-color: var(--light-bg); /* Alternate background */
+}
+
+.testimonial-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+     gap: 30px;
+}
+
+.testimonial-card .quote {
+    font-style: italic;
+    margin-bottom: 15px;
+    color: #555; /* Slightly lighter text for quote */
+    position: relative;
+    padding-left: 20px;
+}
+
+.testimonial-card .quote::before {
+    content: '“'; /* Opening quote */
+    position: absolute;
+    left: 0;
+    top: -10px;
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    opacity: 0.3;
+}
+
+.testimonial-card .client-name {
+    font-weight: 600;
+    text-align: right;
+    color: var(--heading-color);
+    font-size: 0.9rem;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+/* === ABOUT ME SECTION === */
+.about-me {
+    background-color: var(--white-color);
+}
+
+.about-content {
+    max-width: 800px; /* Limit width for readability */
+    margin: 0 auto; /* Center the content block */
+    text-align: left;
+}
+
+.about-content p strong {
+    color: var(--secondary-color); /* Highlight key terms */
+}
+
+/* === FOOTER CTA SECTION === */
+.cta-footer {
+    background-color: var(--heading-color); /* Dark background for footer */
+    color: var(--white-color);
+    text-align: center;
+}
+
+.cta-footer .container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.cta-footer h2.section-title {
+    color: var(--white-color); /* White title on dark background */
+}
+
+.cta-footer p {
+    color: rgba(255, 255, 255, 0.8); /* Slightly transparent white text */
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.cta-footer .btn {
+    margin-bottom: 20px;
+}
+
+.cta-footer .contact-info {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+.cta-footer .contact-info a {
+    color: var(--white-color); /* White link in footer */
+    font-weight: 600;
+}
+
+.cta-footer .contact-info a:hover {
+    text-decoration: underline;
+}
+
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+    h1.main-headline {
+        font-size: 2.2rem;
+    }
+    h2.section-title {
+        font-size: 1.8rem;
+    }
+    .container {
+        padding: 40px 15px; /* Reduce padding on smaller screens */
+    }
+    .services-grid {
+        grid-template-columns: 1fr; /* Stack service cards */
+        gap: 20px;
+    }
+     .testimonial-grid {
+        grid-template-columns: 1fr; /* Stack testimonials */
+        gap: 20px;
+    }
+    .hero .avatar {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1.main-headline {
+        font-size: 1.8rem;
+    }
+    h2.section-title {
+        font-size: 1.5rem;
+    }
+    .hero .subtitle {
+        font-size: 1rem;
+    }
+    .btn {
+        padding: 12px 28px;
+        font-size: 0.9rem;
+    }
+}
