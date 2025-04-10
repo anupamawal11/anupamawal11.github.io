@@ -158,6 +158,7 @@ img {
 .hero .offer-highlight p {
     margin-bottom: 0.5rem;
     font-size: 1rem;
+    text-align: center; /* Center text within highlight box */
 }
 .hero .offer-highlight p:last-child {
     margin-bottom: 0;
@@ -194,7 +195,7 @@ img {
 
 /* === SERVICES SECTION === */
 .services {
-    background-color: var(--white-color);
+    background-color: var(--white-color); /* Section specific background */
 }
 
 .services-grid {
@@ -206,7 +207,8 @@ img {
 .service-card {
     text-decoration: none; /* Remove underline from card link */
     color: inherit; /* Inherit text color */
-    display: block; /* Make the whole card clickable */
+    display: flex; /* Use flexbox for better alignment */
+    flex-direction: column; /* Stack content vertically */
 }
 
 .service-card h3 {
@@ -216,49 +218,12 @@ img {
 .service-card p {
     font-size: 0.95rem;
     margin-bottom: 0; /* Remove bottom margin from last element */
-}
-
-/* === TESTIMONIALS SECTION === */
-.testimonials {
-    background-color: var(--light-bg); /* Alternate background */
-}
-
-.testimonial-grid {
-     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
-     gap: 30px;
-}
-
-.testimonial-card .quote {
-    font-style: italic;
-    margin-bottom: 15px;
-    color: #555; /* Slightly lighter text for quote */
-    position: relative;
-    padding-left: 20px;
-}
-
-.testimonial-card .quote::before {
-    content: '“'; /* Opening quote */
-    position: absolute;
-    left: 0;
-    top: -10px;
-    font-size: 2.5rem;
-    color: var(--secondary-color);
-    opacity: 0.3;
-}
-
-.testimonial-card .client-name {
-    font-weight: 600;
-    text-align: right;
-    color: var(--heading-color);
-    font-size: 0.9rem;
-    margin-top: 10px;
-    margin-bottom: 0;
+    flex-grow: 1; /* Allow paragraph to grow to fill space */
 }
 
 /* === ABOUT ME SECTION === */
 .about-me {
-    background-color: var(--white-color);
+    background-color: var(--light-bg); /* Alternate background */
 }
 
 .about-content {
@@ -327,10 +292,6 @@ img {
         grid-template-columns: 1fr; /* Stack service cards */
         gap: 20px;
     }
-     .testimonial-grid {
-        grid-template-columns: 1fr; /* Stack testimonials */
-        gap: 20px;
-    }
     .hero .avatar {
         width: 120px;
         height: 120px;
@@ -350,5 +311,8 @@ img {
     .btn {
         padding: 12px 28px;
         font-size: 0.9rem;
+    }
+    .about-content p { /* Ensure about me text isn't too wide on small screens */
+       text-align: left;
     }
 }
